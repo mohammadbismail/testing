@@ -1,0 +1,43 @@
+{% extends 'main.html' %}
+
+{% block body %}
+<section class="container">
+    {% if messages %}
+    <ul class="messages">    
+      {% for message in messages %}    
+        <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+      {% endfor %}
+    </ul>
+    {% endif %}
+    <h3 class="text text-center text-success"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M210.6 5.9L62 169.4c-3.9 4.2-6 9.8-6 15.5C56 197.7 66.3 208 79.1 208H104L30.6 281.4c-4.2 4.2-6.6 10-6.6 16C24 309.9 34.1 320 46.6 320H80L5.4 409.5C1.9 413.7 0 419 0 424.5c0 13 10.5 23.5 23.5 23.5H192v32c0 17.7 14.3 32 32 32s32-14.3 32-32V448H424.5c13 0 23.5-10.5 23.5-23.5c0-5.5-1.9-10.8-5.4-15L368 320h33.4c12.5 0 22.6-10.1 22.6-22.6c0-6-2.4-11.8-6.6-16L344 208h24.9c12.7 0 23.1-10.3 23.1-23.1c0-5.7-2.1-11.3-6-15.5L237.4 5.9C234 2.1 229.1 0 224 0s-10 2.1-13.4 5.9z"/></svg><u>Arbitrarily Plant a Tree</u></h3>
+    <form style="width: 50%; margin:0 auto;" action="{{form_action}}" method="post">
+        {% csrf_token %}
+        <div class="form-group mb-3">
+          <div class="form-row mb-3">
+            <label for="species">Species: </label>
+            <input name="species" type="text" class="form-control" id="species" value="{{tree.species}}" required>
+            <small id="showTitleHelp" class="form-text text-muted">Species should be at least 5 characters.</small>
+          </div>
+          <div class="form-row mb-3">
+              <label for="location">Location: </label>
+              <input name="location" type="text" class="form-control" id="location" value="{{tree.location}}" required>
+              <small class="form-text text-muted">Location should be at least 2 characters.</small>
+            </div>
+            <div class="form-row mb-3">
+                <label for="reason">Reason: </label>
+                <input name="reason" type="text" class="form-control" id="reason" value="{{tree.reason}}" required>
+                <small class="form-text text-muted">Reason shouldn't exceed 50 characters.</small>
+            </div>
+            <div>
+            <div class="form-row mb-3">
+                <label for="date_planted" >Date Planted: </label>
+                <input name="date_planted" type="date" class="form-control" id="date_planted" name="date_planted" value="{{date_planted}}" min="2010-01-01" max="2030-12-31" required>
+            </div>
+            </div>
+          <div class="text-center mb-2">
+          <button class="btn btn-outline-success" style="width: 150px;">{{form_button}}</button>
+          </div>
+        </div>
+    </form>
+</section>
+{% endblock %}

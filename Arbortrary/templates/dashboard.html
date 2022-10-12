@@ -1,0 +1,28 @@
+{% extends 'main.html' %}
+
+{% block body %}
+<main>
+    <section class="trees-users-table">
+        <table class="table table-striped table-bordered">
+            <thead >
+              <tr class="table-success">
+                <th scope="col">Species</th>
+                <th scope="col">Planted By</th>
+                <th scope="col">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for tree in trees %}
+                <tr>
+                    <td>{{ tree.species }}</td>
+                    <td>{{ tree.user.first_name }} {{ tree.user.last_name }}</td>
+                    <td>
+                        <a href="/trees/show/{{tree.id}}"><u>details</u></a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+          </table>
+    </section>
+</main>
+{% endblock %}

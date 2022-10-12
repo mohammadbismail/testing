@@ -1,0 +1,12 @@
+{% extends 'main.html' %}
+
+{% block body %}
+<main>
+<section class="container tree-details">
+    <h1 class="mb-3">{{tree.species}} planted by: {{tree.user.first_name}} {{tree.user.last_name}}</h1>
+    <h5 class="mb-3"><span class="font-weight-bold">Where: </span> {{tree.location}} </h5>
+    <h5 class="mb-3"><span class="font-weight-bold">when: </span>{{tree.date_planted}}</h5>
+    <h5 class="mb-3"><span class="font-weight-bold">Reason: </span>{{tree.reason}}</h5>
+</section>
+</main>
+{% endblock %}

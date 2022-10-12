@@ -1,0 +1,30 @@
+{% extends 'main.html' %}
+
+{% block body %}
+<main>
+    <h2>Manage My Trees</h2>
+    <section class="trees-users-table">
+        <table class="table table-striped table-bordered">
+            <thead >
+              <tr class="table-success">
+                <th scope="col">Species</th>
+                <th scope="col">Date Planted</th>
+                <th scope="col">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for tree in user_trees %}
+                <tr>
+                    <td>{{ tree.species }}</td>
+                    <td>{{ tree.date_planted }}</td>
+                    
+                    <td>
+                        <a class="delete-button" href="/trees/delete/{{tree.id}}"><u>delete</u></a><a href="/trees/edit/{{tree.id}}"><u>edit</u></a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+          </table>
+    </section>
+</main>
+{% endblock %}

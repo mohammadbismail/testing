@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" 
+          href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
+    <title> {{ page_title }} </title>
+    <style>
+        body {
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2%;
+            background-color: #28a745;
+            margin-bottom: 1.2%;
+            color: white;
+        }
+        .right-header-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .my-trees {
+            margin-right: 10%;
+            font-size: 1.4rem;
+        }
+        .my-trees a {
+            color: #bcf8cb;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;  
+            padding: 0 2%;
+        }
+        section {
+            width: 40%;
+        }
+        main {
+            padding: 5%;
+        }
+        svg {
+            color:#28a745 ;
+            height:30px;
+            width:30px;
+            margin-right: 20px;
+        }
+        .messages {
+            color: red;
+            list-style-type: '**';
+            margin: 0 30%;
+        }
+        .delete-button {
+            margin-right: 5px;
+        }
+        .special-width-p {
+            margin-top: 10px;
+            width: 100px;
+        }
+        .special-width-h {
+            width: 250px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 class="header-title">Arbortrary</h1>
+        <div class="right-header-nav">
+            <p class="my-trees special-width-p"><a href="/trees/user/account"><u>My Trees</u></a></p>
+            <h3 class="special-width-h">Welcome, {{user.first_name}}!</h3>
+        </div>
+    </header>
+    <nav>
+        <h4>A site to track randomly planted trees</h4>
+        <div class="nav-buttons">
+            <a href="{{nav_button_action}}" type="button" class="btn btn-lg btn-outline-success">{{nav_button}}</a>
+            <a href="/login" type="button" class="btn btn-lg btn-outline-secondary">Logout</a>
+        </div>
+    </nav>
+    
+    {% block body %}
+    {% endblock %}
+</body>
+</html>
